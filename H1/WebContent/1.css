@@ -1,0 +1,7 @@
+.bg{background-color: red}
+	h1,h2,h3{color: red}
+	h4,h5,h6{color: green}
+	table,td,input{font-size:30px;padding:0}
+	a:link {font-family: "宋体";text-decoration: none}<!--设定正常状态下链接文字的样式-->
+	a:visited {font-family: "宋体"; text-decoration: none;color: red}
+	a:hover{font-family:"宋体";text-decoration: overline;font-size: 30px}
