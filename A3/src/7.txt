@@ -1,0 +1,52 @@
+1.Inheritance extends
+2.Object下的方法11个。
+  clone,toString,HashCode,notify,
+  wait,equals,getClass,notifyAll,finalize,
+3.作业：写三角形，矩形的面积
+     用继承和封装特性，写出来，取得面积
+4.聚合：Aggregation
+     组合：Composite
+     区别：组合是一荣俱荣，一损俱损
+                聚合：可以独立存在。
+5.UML:类图（Class Digim） ，状态图，活动图，时序图，用例图
+6。作业：自己写组合和聚合的例子，内容自拟
+7.重载：在同一个类中，有若干个相同名字的方法，但是形参的个数，顺序，类型不同，就称为Overload。
+  它跟返回值没有关系，跟修饰符无关
+8.作业，写构造器重载，int char String float,谢谢。
+9.this的第一种方法，调用自己本身的成员
+  this的第二种用法，返回自己，并可以继续调用自己对象的成员。
+  this的第三种用法，调用自己本身的构造器:a/只能用在构造器中，b/且必须是第一天语句。
+10.super的第一种用法：调用父亲的成员
+   super的第二种用法：  调用父亲的构造器。
+11.作业：写个你认为复杂的三级关系，有this(),this(XX,XX)super(),super(XX,XX) {}自己看他的输出顺序。
+12.{}没有方法名字的匿名方法，处在第2层。
+   {}执行先于构造器。
+13.作业：宝马车
+14.重写：override，在子类继承父类的时候，父类的方法不能满足子类，子类可以声明一个和父类方法（名称，参数，返回值）都相同。
+15.toString
+16.缺省包名：
+17.java.lang---Object
+   java.awt---界面开发
+   java.applet--小程序开发
+   java.net--网络开发
+   java.io--流开发
+   java.util--工具
+   java.sql--数据库
+   java.nio--new io 新流
+   
+   cs--client /server
+   bs--browser/server
+18.作业，测试default/protected区别：
+   private
+   [default]: 必须是子类继承父类，且实例化子类，  同一个包能用
+   protected：必须是子类继承父类，且实例化子类， 不同包能用
+   public
+19static-->dynamic
+     存储值
+20final： a。final常量不能被修改
+         b.final类不能被继承。String,Math
+         c.final方法不能被重写
+  
+  
+  
+  

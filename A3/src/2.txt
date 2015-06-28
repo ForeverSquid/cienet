@@ -1,0 +1,32 @@
+C   //
+  /*   
+	ksdkfsd
+sdfksdfksd
+
+sdfksdk
+*/
+C++ //
+java //
+
+测试人员：
+API：Application Programe Interface
+
+
+1.作业：文档注释
+2.Java是大小写区分的。
+3.关键字：Key Words
+  goto
+4.byte,short,int,long
+  float,double
+  char 
+  boolean
+  String--引用类型，stack overflow Exception,heap
+  Scala
+5.java的背后编码格式unicode,因此可以用中文标识符。
+  ASCII码00-FF
+6.作业：0 9 A Z a z，姓名（正反）把ASCII 10进制打出来
+7.ArithmeticException:算术异常
+
+
+
+

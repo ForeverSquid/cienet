@@ -1,0 +1,35 @@
+1.local var:varrient
+2.global var
+3.function,procedure,method
+4.argument
+5.statement
+6.define
+作业：矩形，圆，正方形，三角形，梯形
+10.基本类型做形参的时候，用的是值传递，局部变量不受影响。
+11.作业：A?B:C; if(A){//闰年
+	   B		
+	  }else{
+	   C
+	  }
+12.作业switch：spring,summer,fall,winter
+   1.6,byte,short,int,char,enum
+   1.7,.....              String,enum
+
+13.作业：洞
+   2*4
+   4*6
+...
+14宝剑 
+15九九乘法表
+16.a
+   aba
+....
+
+			8888888888888888
+			666666    666666
+			4444        4444
+			22            22
+			22            22
+			4444        4444
+			666666    666666
+			8888888888888888

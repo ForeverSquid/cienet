@@ -1,0 +1,33 @@
+1.for
+2.while,
+3.作业：妈妈给小明钱
+4.do..while
+  作业：找出最大的。
+5.continue<break<return
+6.boolean
+  byte
+  short
+  int 
+  long
+  float
+  double
+  char
+  只有栈 stack没有堆 heap。
+i==j//栈的值是否相等
+equals//比较堆得值是否相等
+7.ArithmeticException
+  NullPointerException
+  ArrayIndexOutOfBoundsException:数组索引越界异常
+8.utility
+  sort arraycopy
+9。作业：电影院
+10作业小孩
+11.做一个4维数组，遍历。饱满
+	
+
+
+
+
+
+
+

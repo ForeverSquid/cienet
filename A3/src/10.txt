@@ -1,0 +1,17 @@
+1.StringBuffer:解决的是多个字符串想连接，而需要开好多个堆，导致性能下降的问题。
+  线程安全，但是速度慢
+  StringBuilder:
+ 线程不安全，但是速度快
+2.ArrayList vector区别：
+  1.线程安全，速度慢 vector Enumeration
+  2.线程不安全，速度快 ArrayList
+3.作业：吃东西
+4.作业：ArrayList的5种遍历
+5.作业：购物车(list hashmap)
+6.作业：linkedlist各种增加删除 体会含义
+7.作业：Hashtable的多种遍历
+8.hashtable和hashmap的区别：
+  1.hashtable线程安全的，同步的速度慢，hashmap是异步的，速度快
+  2.hashtable继承Dictionary,hashmap的AbstractMap
+  3.hashtable不允许有空键 空值，hashmap允许有空键，空值，且允许有一个。
+
