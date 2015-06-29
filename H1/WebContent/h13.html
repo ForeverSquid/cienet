@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	function animal(name,old){
+		this.name=name;//全局的 若改成var 是私有的name
+		this.old=old;
+		this.concat=function(x){
+			
+			alert(x+this.name);
+			
+		}
+		
+		
+		
+	}
+	function ok1(){
+		var s=new Array();
+		s[0]=new animal('Dog',10);
+		s[1]=new animal('Dog1',20);
+		s[0].concat('cat');
+		s[1].concat('cat111');
+		alert(s[0].name);
+	}
+
+	function people(name,old){
+		var name=name;//全局的 若改成var 是私有的name
+		var old=old;
+		this.go=function(x){
+			
+			alert(x);
+			
+		}
+	}
+	function ok2(){		
+		var p=new people('Mike',10);
+		p.go(100);
+		people.prototype.addCate=function(sex){
+			
+			alert(sex);
+		}
+		p.addCate('male');		
+		people.prototype.male='男';
+		alert(p.male);		
+		String.prototype.weikun=function(){
+			alert('perfect');
+			
+		}
+		var s='Hello';
+		s.weikun();
+	}
+	function dog(){
+		
+		
+	}
+	function ok3(){
+		
+		dog.prototype={
+			name:'MIKE',
+			getName:function(){
+				return this.name;
+				
+			},
+			setName:function(name){
+				
+				this.name=name;
+			}
+				
+				
+		}
+		var d=new dog();
+		d.setName('cat');
+		alert(d.getName());
+		
+		
+	}
+</script>
+</head>
+<body>
+	<button onclick="ok1()">点击</button>
+	<button onclick="ok2()">点击2</button>
+	
+	<button onclick="ok3()">点击3</button>
+	
+</body>
+</html>
