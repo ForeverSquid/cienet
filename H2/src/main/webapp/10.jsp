@@ -1,5 +1,4 @@
-<%@ page language="java" import="java.util.*,java.text.*" 
-	contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,13 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-		<form method="get" action="2.jsp">
-			用户名<input type="text" name="username">
-			密码<input type="text" name="password">
-			<input type="submit" value="提交">		
-		</form>
+	<%=request.getAttribute("ok")
 		
+	
+	%>
+	<%=request.getParameter("ok")
 		
+	
+	%>
 </body>
 </html>
