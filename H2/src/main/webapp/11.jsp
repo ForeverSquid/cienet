@@ -8,8 +8,30 @@
 </head>
 <body>
 	<%
-	
+		int count=0;
+		if(application.getAttribute("x")==null){//没有x这个值
+			//原始值
+			application.setAttribute("x",Integer.parseInt(application.getInitParameter("count")) );
+			
+		}else{
+			count=Integer.parseInt(application.getAttribute("x").toString());			
+			count++;
+			application.setAttribute("x",count);
+		}
+		
+		String sc=String.valueOf(count) ;
+		char [] cs=sc.toCharArray();
+	%>
+		你是第
+	<%	
+		for(char c :cs){
+	%>
+		<img alt="" src="images/<%=c %>.gif">
+    <%
+			
+		}
 		
 	%>
+	 位访客！
 </body>
 </html>
