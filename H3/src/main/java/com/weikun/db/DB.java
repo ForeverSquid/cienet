@@ -3,13 +3,16 @@ package com.weikun.db;
 import java.sql.*;
 
 public class DB {
+	public static void main(String[] args) {
+		System.out.print(DB.getConnection());
+	}
 	private static Connection conn;
 	public static Connection getConnection(){
 		
 		try {
 			Class.forName("org.gjt.mm.mysql.Driver");
 			
-			conn=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8", "root", "root");
+			conn=DriverManager.getConnection("jdbc:mysql://192.168.1.155:3306/test?useUnicode=true&characterEncoding=utf-8", "root", "root");
 			
 			
 		} catch (Exception e) {

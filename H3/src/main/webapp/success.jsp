@@ -17,7 +17,10 @@ body {
 <body>
 
 
-	<h2>华语九天榜</h2>
+	<h2>用户管理</h2>
+	<div>
+		<a href="add.jsp">增加用户</a>
+	</div>
 	<table class="table table-striped table-bordered">
 		<tr>
 			<th>序号</th>
@@ -42,7 +45,7 @@ body {
 			<td><%=user.getPassword() %></td>
 			<td><%=user.getAge() %></td>
 			<td><%=user.getBirth() %></td>
-			<td><a href="opt.jsp?id=<%=user.getId()%>">删除</a><a href="">修改</a></td>
+			<td><a href="opt.jsp?id=<%=user.getId()%>&action=del">删除</a><a href="opt.jsp?action=update&id=<%=user.getId()%>">修改</a></td>
 		</tr>
 		<%
 			i++;

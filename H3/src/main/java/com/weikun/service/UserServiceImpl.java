@@ -22,5 +22,20 @@ public class UserServiceImpl implements IUserService {
 		// TODO Auto-generated method stub
 		return dao.del(user);
 	}
+	@Override
+	public boolean add(User user) {
+		// TODO Auto-generated method stub
+		return dao.add(user);
+	}
+	@Override
+	public User queryById(int id) {
+		// TODO Auto-generated method stub
+		return dao.queryById(id);
+	}
+	@Override
+	public boolean update(User user) {
+		// TODO Auto-generated method stub
+		return dao.update(user);
+	}
 	
 }
