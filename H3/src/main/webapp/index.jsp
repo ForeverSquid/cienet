@@ -27,9 +27,11 @@
 </script>
 </head>
 <body>
-	<form id="form1" name="form1" action="check.jsp" method="post">
+	<form id="form1" name="form1" action="user.do" method="post">
 		<span>用户名：</span><input type="text" name="username" id="username"/><br/>
+		<input type="hidden" name="action" value="login">
 		<span>密码：</span><input type="text" name="pwd" id="pwd"/><br/>
+		
 		<input type="button" value="提交" onclick="ok()">
 	
 	</form>

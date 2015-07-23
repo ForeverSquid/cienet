@@ -7,7 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="BaseControl">我的控制</a>
+	<a href="UserControl?action=first">FIRST</a>
+	<a href="UserControl?action=second">SECOND</a>
+	<br/>
 	
+	<a href="do">do</a>
+	<a href="do1">do1</a>
 </body>
 </html>

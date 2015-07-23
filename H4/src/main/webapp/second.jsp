@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="BaseControl">我的控制</a>
-	
+	<h1>Second</h1>
 </body>
 </html>

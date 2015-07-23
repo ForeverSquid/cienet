@@ -10,6 +10,14 @@ import java.io.Serializable;
  *
  */
 public class User implements Serializable {
+	private String sex;
+	
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 	private int id;
 	private String username;
 	private String password;

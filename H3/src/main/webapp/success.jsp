@@ -31,8 +31,8 @@ body {
 			<th>操作</th>
 		</tr>
 		<%
-			IUserService service=new UserServiceImpl();
-			List<User> list=service.query();
+			List <User> list=(List<User>)request.getAttribute("list");
+			
 			int i=1;
 			for(User user :list){
 				
@@ -45,7 +45,7 @@ body {
 			<td><%=user.getPassword() %></td>
 			<td><%=user.getAge() %></td>
 			<td><%=user.getBirth() %></td>
-			<td><a href="opt.jsp?id=<%=user.getId()%>&action=del">删除</a><a href="opt.jsp?action=update&id=<%=user.getId()%>">修改</a></td>
+			<td><a href="user.do?id=<%=user.getId()%>&action=del">删除</a><a href="user.do?action=update&id=<%=user.getId()%>">修改</a></td>
 		</tr>
 		<%
 			i++;

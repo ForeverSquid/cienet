@@ -83,10 +83,12 @@
 		}
 	
 	%>
-	<form id="form1" name="form1" method="post" action="opt.jsp">
+	<form id="form1" name="form1" method="post" action="user.do">
 		用户名：<input type="text" name="username" id="username" tabindex="1"
 		value="<%=user==null?"请输入用户名":user.getUsername()%>" class="te" onfocus="go()" />
 		<br/>
+		男<input type="radio" name="sex" value="male"/>
+		女<input type="radio" name="sex" value="female"/>
 		<input type="hidden" name="action" value="<%=user==null?"add":"update1"%>">
 		<input type="hidden" name="id" value="<%=user==null?"":user.getId()%>">
 		密&nbsp;码：<input tabindex="2" type="password" name="pwd" id="pwd" value="<%=user==null?"":user.getPassword()%>" >

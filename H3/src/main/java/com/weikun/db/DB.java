@@ -12,7 +12,7 @@ public class DB {
 		try {
 			Class.forName("org.gjt.mm.mysql.Driver");
 			
-			conn=DriverManager.getConnection("jdbc:mysql://192.168.1.155:3306/test?useUnicode=true&characterEncoding=utf-8", "root", "root");
+			conn=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8", "root", "root");
 			
 			
 		} catch (Exception e) {
