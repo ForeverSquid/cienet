@@ -1,0 +1,43 @@
+JSTL EL
+JSP
+Java
+oracle
+blob
+clob
+fileupload
+连接池
+过滤器:com.weikun.filter,主要是转码
+分页
+ck
+监听器
+
+
+article ：
+ID：主键，贴ID
+userID：谁发的帖子，外键（bbsuser表后的id）
+title：帖子标题
+datetimte：发帖时间
+content：发帖内容-clob
+rootid：如果你发的帖子是子贴，rootid值是主贴的id，如果是主贴，值是0.
+
+BBSUser
+id：主键
+username：用户名
+password：密码
+pic：头像 blob
+pagenum:每个人分页喜好数量，每页显示多少行
+
+
+登录(显示头像)，注册（上传头像），查帖（分页），发帖，回帖，删帖，
+
+
+
+
+
+
+
+
+
+
+
+
