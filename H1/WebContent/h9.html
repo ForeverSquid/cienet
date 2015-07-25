@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function getUsername(){
+		
+		
+		alert(document.getElementById('username').value);
+	}
+	function getPwd(){
+		var len=document.getElementsByName("pwd").length;
+		for(var i=0;i<len;i++){
+			var p=document.getElementsByName("pwd");
+			alert(p[i].value);
+		}
+		
+		
+	}
+	
+	function getSex(){
+		var len=document.getElementsByName("sex").length;
+		for(var i=0;i<len;i++){
+			var p=document.getElementsByName("sex");
+			
+			if(p[i].checked){
+				alert(p[i].value);
+				
+			}
+			
+		}
+		
+	}
+	
+	function getInterest(){
+		var len=document.getElementsByName("interest").length;
+		for(var i=0;i<len;i++){
+			var p=document.getElementsByName("interest");
+			
+			if(p[i].checked){
+				alert(p[i].value);
+				
+			}
+			
+		}
+		
+	}
+	
+	function getCity(){
+		var len=document.getElementById("city").options.length;
+		
+		for(var i=0;i<len;i++){
+			var p=document.getElementById("city").options;
+			
+			if(p[i].selected){
+				alert(p[i].value);
+				
+			}
+			
+		}
+		
+	}
+
+</script>
+</head>
+<body>
+	<form id="form1" name="form1" action="h8.html" method="post">
+	用户名：<input type="text" id="username" name="username" />
+	
+	<button id="btn" onclick="getUsername()">得到用户名</button> 
+	<br/>
+	密码：<input type="text" id="pwd" name="pwd" />	
+	再次密码：<input type="text" id="pwd" name="pwd" />	
+	<button id="btn" onclick="getPwd()">得到密码</button> 
+	<br/>
+	性别
+	男<input type="radio" id="sex" name="sex"  value="male">
+	女<input type="radio" id="sex" name="sex" value="female">
+	<button id="btn" onclick="getSex()">得到性别</button> 
+	<br/>
+	兴趣
+	Java<input type="checkbox" id="interest" name="interest"  value="j">
+	C#<input type="checkbox" id="interest" name="interest" value="c">
+	Lua<input type="checkbox" id="interest" name="interest" value="l">
+	PHP<input type="checkbox" id="interest" name="interest" value="p">
+	<button id="btn" onclick="getInterest()">得到兴趣</button>  
+	
+	<br/>
+	你喜欢的城市
+	<select id="city" name="city">
+		<option  value="haerb">
+			哈尔滨		
+		</option>		
+		<option  value="cc">
+			长春	
+		</option>
+	</select>	
+	<button id="btn" onclick="getCity()">得到城市</button>
+	<br/>
+	<input type="button" onclick="document.all.form1.submit()"/>
+	<button id="btn" >请求</button>
+	<br/>
+	
+	<br/>
+	<br/>
+	
+	<br/>
+	<br/>
+	</form>
+	<a href="" onmouseover="over()" onmouseout="out()">我的女孩</a>
+	<div id="stu" style="display:none">
+		<div>
+			<img src="images/2.jpg"/>
+		
+		</div>
+	
+		<div>
+			<span>188.00</span>
+		
+		</div>
+	</div>
+	<script type="text/javascript">
+		function over(){
+			var stu=document.getElementById('stu');
+			stu.style.display='block';
+		}
+		function out(){
+			var stu=document.getElementById('stu');
+			stu.style.display='none';
+		}
+	
+	</script>
+	
+	<button id="btn1" onclick="bark()" >点击超链</button>
+	
+	<script type="text/javascript">
+	
+		function bark(){
+			window.location="h8.html";
+			
+		}
+	
+	</script>
+</body>
+</html>

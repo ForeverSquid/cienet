@@ -1,0 +1,37 @@
+<%@page import='' language='' contentType='' buffer=''
+   session='' isELIgnored='' pageEncoding=''%>
+<%@include file=''%>
+<%@taglib%>
+
+<jsp:useBean id='' class>
+<jsp:setProperty property name='' value=''>
+<jsp:getProperty property name='' 
+<jsp:include page/>:动作，先编译再合成   page 能传参
+	<jsp:param
+<%@include file=''%>：指令，先合成再编译 file,不能传参数
+<jsp:forward page
+<jsp:param
+跳转，重定向()
+转向（forward）
+
+config配置,
+application应用,
+out输出,
+request,请求
+pageContext,页面上下文
+exception异常,session会话,
+response响应,page页面
+
+作业：写个简历，并提交，之后显示你填写的内容。
+
+page：页面变量 XXXAttribute  <%@include 
+request：页面，请求变量。只能应用在同一个页中或者是同一个请求中 XXXAttribute
+<jsp:include <%@include <jsp:forward
+session（有时间限制）：页面变量 请求变量 不相关的页 多次请求的页 XXXAttribute
+<jsp:include <%@include <jsp:forward <a href> response.sendRedirect(重定向) <form
+application(无时间限制):XXXAttribute
+
+pageContext
+
+
+

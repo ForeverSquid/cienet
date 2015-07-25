@@ -1,0 +1,27 @@
+Microsoft
+IBM
+Google
+Oracle---1.8
+
+c->c++->java->c#
+
+J2SE---Java 2 Standard Edition
+J2EE--Java 2 Enterprise Edition(web\JSP\Framework)
+Android,ios,Winphone,  
+pascal
+编译型语言  快，不能跨平台
+解释型语言：js html css 慢 能跨平台
+
+platform:平台。
+	windows\linux(red hats\centos\ubuntu)\unix\mac
+
+compile javac-->.java--.class
+jvm:java virtual   machine
+jre:java runtime environment:java 
+syntax  error: 语法错误。
+
+Garbage Collection:垃圾回收器
+JDK:Java Development Kits
+
+作业：10遍HelloWorld，并且编译成功！
+

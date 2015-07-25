@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+// 	window.onload=function(){
+// 		alert(100);
+		
+// 	}
+	
+	function ok(){
+		for(var i=0;i<arguments.length;i++){
+			alert(arguments[i]);
+			
+		}
+		
+	}
+	function ok2(a){
+		a[a.length]='900';
+		for(var i=0;i<a.length;i++){
+			
+			alert(a[i])
+		}
+		
+	}
+	function ok3(){
+		var s='alert(x+y+z)';
+		var fun=new Function("x","y","z",s);//(变量1，变量n,函数体)
+		fun(10,20,90);
+	}
+	function ok4(param,y,z){
+		
+		param(y,z);
+	}
+	
+	
+	var param=function(y,z){
+		
+		alert(y+z);
+	}
+	function ok5(x){//x=static 
+		
+		 return function(y){
+			return x*2;
+			
+		}
+	}
+	
+	
+</script>
+</head>
+<body >
+	<button onclick="ok(1,2,3,4,5)">点击1</button>
+	<button onclick="ok2(new Array(1,2,3,4,5))">点击2</button>
+	<button name="btn3" id="btn3" onclick="ok3()">点击3</button>
+	<button name="btn3" id="btn3" onclick="ok4(param,10,20)">点击4</button>
+	<button name="btn3" id="btn3" onclick="var m=ok5(10);alert(m(2))">点击5</button>
+	<script type="text/javascript">
+	
+		
+	
+	</script>
+</body>
+</html>

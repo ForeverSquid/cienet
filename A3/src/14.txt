@@ -1,0 +1,13 @@
+1.stream:流
+2.从数据类型划分分为字节流和字符流
+3.从方向划分 为输入流，输出流。
+  FileInputStream：
+  FileOutputStream:
+4.作业：copy文件
+5.RandomAccessFile extends Object implements DataInput,DataOutput
+  因此具备输入输出功能，
+  具备自由定位功能，
+6.ByteArrayInputStream,ByteArrayOutputStream:可以把变量的值变成流
+7.Serializable:把对象转换成与平台无关的二进制流，从而允许把二进制流持久的存到磁盘上。
+8.作业:指定目录后 ，把所有目录中的文件列举出来
+9.作业：聊天，通过网上查询，找到带scanner，while(true)的socket程序

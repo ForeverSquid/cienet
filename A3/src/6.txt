@@ -1,0 +1,17 @@
+1.过程式程序设计：basic C: turbo C Borland C++ Borland Pasical --WPS--金山公司：求伯君 CCED
+2.结构化程序设计：Visual C++ Visual Basic Delphi
+3.面向对象设计：Java C# 
+4.OOP
+     三大特征：封装(Encapsulation)
+                        继承(Inheritance)
+                        多态：(Polymorphism)-Multi-Dulp
+5.getter setter--封装
+6.作业：name,sex,school,grade,old(getter setter 封装)
+7.构造器：必须和类同名。构造器是没有void的特殊方法---()
+8.declaretion-define
+9.默认构造器只能有一个，非默认构造器允许多个
+10.修饰符：modifiers
+11.基本类型当形参的时候，传递的是值。
+12.引用类型当形参的时候u，传递的是地址
+13.String,Integer,Double Float Byte Short Character Boolean Long
+       当形参的时候，传递进来的地址是副本地址，他们本身是常量，不能改变。

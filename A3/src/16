@@ -1,0 +1,11 @@
+1.io:输入流，输出流/XXXStream:字节流 :XXXReader:字符流
+2.BufferedXXX
+3.InputStreamReader:Scanner(System.in)
+4.RandomAccess:seek
+
+JDK1.7 
+NIO:New IO
+AIO:异步非阻塞
+BIO:同步阻塞
+NIO:同步非阻塞
+5.FileChannel

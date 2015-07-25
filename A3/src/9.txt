@@ -1,0 +1,24 @@
+1.枚举类：Spring Summer Fall winter
+       Earth,Mars,Jupiter,Saturn
+2.枚举类：是有限的对象，只能实现接口，不能继承
+        他的构造器是必须私有的。
+3.SimpleDateFormat()
+  y-年
+  M-月
+  d-日
+  H-小时
+  m-分
+  s-秒
+4.作业：日历牌，任意输入年 月 得到
+5.作业：Math.random 随机生成A-Z5个字母。且不能重复
+6.Random
+7.Sequence
+8.ISO8859-1 
+  utf-8>GB18030>GBK>GB2312
+  
+10.前缀：prefix
+        后缀:suffix
+11.作业：去掉中间空格
+
+
+

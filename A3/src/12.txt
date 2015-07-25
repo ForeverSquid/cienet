@@ -1,0 +1,18 @@
+1.NullPointerException
+2.ArithmeticException
+3.ArrayIndexOutOfBoundsException
+4.ClassCastException
+5.EOFException
+6.IOException
+7.SQLException
+8.NoSuchMethodException
+9.FileNotFoundException
+10.NumberFormatException
+11.RuntimeException
+12.SocketException
+13.ClassNotFoundException
+14.NegativeArraySizeException
+catch Throw Throws区别
+catch:被动
+throw，单个异常，语句后， throws：主动地，多个异常，方法后
+作业：面积，自定义异常，三大特性。体会try catch throw。。。

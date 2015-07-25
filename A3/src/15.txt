@@ -1,0 +1,15 @@
+1.Thread：线程
+2.Process:进程
+3.作业：extends Thread    
+  作业：implements Runnable
+4.sleep
+5.setPriorty
+6.yield
+7.setDaemon
+8.join
+9.作业：Timer TimerTask
+10.作业：线程同步
+11.作业：线程通信
+12.线程池：newSingleThreadExector
+        newFixedThreadPool
+        newCachedThreadPool
