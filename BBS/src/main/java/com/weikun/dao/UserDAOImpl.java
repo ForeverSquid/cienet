@@ -3,6 +3,8 @@
  */
 package com.weikun.dao;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -119,7 +121,7 @@ public class UserDAOImpl implements IUserDAO {
 		return is;
 		
 	}
-
+	
 	@Override
 	public boolean register(BBSUser user) {
 		// TODO Auto-generated method stub
@@ -127,11 +129,16 @@ public class UserDAOImpl implements IUserDAO {
 		boolean flag=false;
 		
 		try {
-			String sql="insert into bbsuser(id,username,password,pagenum) values(?,?,?,5)";
+			String sql="insert into bbsuser(id,username,password,pagenum,pic) values(?,?,?,5,?)";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, getMaxId());
 			pstmt.setString(2, user.getUsername());
 			pstmt.setString(3, user.getPassword());
+			File file=new File(user.getFpath());
+			
+			FileInputStream fis=new FileInputStream(file);
+			pstmt.setBinaryStream(4, fis, fis.available());
+			
 			
 			
 			flag=pstmt.executeUpdate()>0?true:false;

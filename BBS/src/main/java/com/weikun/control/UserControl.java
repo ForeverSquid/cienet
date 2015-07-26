@@ -34,9 +34,32 @@ public class UserControl extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String action=req.getParameter("action");//分割是注册还是登录
 		RequestDispatcher dispatcher=null;
 		BBSUser user=new BBSUser();
+		String ct=req.getContentType();
+		//null 没分号 有分号
+		if(ct!=null&&ct.indexOf(";")!=-1){
+			String value=ct.substring(0,ct.indexOf(";"));
+			if(value.trim().equals("multipart/form-data")){//以文件上传的形式提交，因此一定是注册
+				
+					
+				user=service.uploadPic(req);
+					
+				if(service.register(user)){
+					dispatcher=req.getRequestDispatcher(map.get("success").toString());
+					dispatcher.forward(req, resp);
+				}
+					
+					
+				return ;
+			}
+			
+		}
+		
+		
+		String action=req.getParameter("action");//分割是注册还是登录
+		
+	
 		if(action.equals("login")){
 			
 			user.setUsername(req.getParameter("username"));
@@ -61,10 +84,6 @@ public class UserControl extends HttpServlet {
 				dispatcher.forward(req, resp);
 				
 			}
-		}else if(action.equals("register")){//注册，
-			
-			
-			
 		}else if(action.equals("pic")){//显示头像
 			int id=Integer.parseInt(req.getParameter("id"));
 			InputStream is=service.getPic(id);

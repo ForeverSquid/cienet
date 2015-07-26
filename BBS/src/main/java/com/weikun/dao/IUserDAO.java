@@ -8,4 +8,5 @@ public interface IUserDAO {
 	public BBSUser login(BBSUser user);
 	public boolean register(BBSUser user);
 	public InputStream getPic(int id);
+	
 }

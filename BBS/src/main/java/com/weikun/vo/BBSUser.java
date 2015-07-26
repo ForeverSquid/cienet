@@ -7,6 +7,14 @@ public class BBSUser implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private String fpath;//blob存取的文件路径
+	
+	public String getFpath() {
+		return fpath;
+	}
+	public void setFpath(String fpath) {
+		this.fpath = fpath;
+	}
 	private int id;
 	private String username;
 	private String password;
