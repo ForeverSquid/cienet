@@ -1,0 +1,16 @@
+CREATE OR REPLACE PROCEDURE P_120 (
+  out_maxrows out number ,
+  out_ref out sys_refcursor
+)
+
+AS
+BEGIN
+open out_ref for
+  select a.*,b.* from ARTICLE a,BBSUser  b
+  where a.rootid=0 and a.userid=b.id
+   order by a.id desc ;
+EXCEPTION
+
+ when others THEN
+  dbms_output.put_line('小错误');
+END;

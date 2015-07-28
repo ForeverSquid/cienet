@@ -39,6 +39,7 @@
 				<table class="table table-bordered table-striped table_vam"
 					id="dt_gal">
 					<thead>
+					
 						<tr>
 
 							<th class="table_checkbox">序号</th>
@@ -50,16 +51,16 @@
 						</tr>
 					</thead>
 					<tbody>
-
-						
+						<c:set value="${requestScope.pb}" var="pb"></c:set>
+						<c:forEach items="${requestScope.pb.data}" var="article" varStatus="status">
+								
 								<tr>
-
-									<td></td>
+									<td>${status.count}</td>
 									<td><a href="upload/.jpg"
 										
 										title="" class="cbox_single thumbnail">
 
-											<img src="UserControl?action=pic&id="
+											<img src="user.do?id=${article.user.id}&action=pic"
 											alt="" style="height: 50px; width: 50px" />
 
 									</a>
@@ -68,10 +69,10 @@
 									
 									</td>
 									<td>
-									
+										
 									
 									<a
-										href=""></a>
+										href=""><b>${article.title}</b></a>
 										
 									
 									
@@ -80,8 +81,8 @@
 									
 									
 									</td>
-									<td></td>
-									<td></td>
+									<td>${article.content}</td>
+									<td>${article.datetime}</td>
 									<td>
 											
 										<!-- 没登陆，游客 uid=0 -->
@@ -108,7 +109,7 @@
 									</td>
 										
 								</tr>
-							
+							</c:forEach>
 					</tbody>
 				</table>
 
@@ -117,7 +118,11 @@
 			</div>
 		</div>
 		
+		<c:if test="${pb.maxPage>1}">
 			<%@include file="page.jsp"%>
+		</c:if>
+		
+			
 		
 
 	</div>
