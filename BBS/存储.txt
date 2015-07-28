@@ -1,14 +1,56 @@
 CREATE OR REPLACE PROCEDURE P_120 (
-  out_maxrows out number ,
-  out_ref out sys_refcursor
+  in_curpage in number,--当前页码
+  in_usrid in number,--分清楚，是游客默认5行还是用户（pagenum）
+  out_maxrows out number ,--得到最大行数
+  out_maxpages out number,--得到最大页数
+  out_pagerow out number,--每页行数
+  out_ref out sys_refcursor--每页数据
 )
 
 AS
+n_pagenum number(3):=5;--合法用户每页的行数
 BEGIN
+  /*      
+          得到最大的行数
+  */
+  select count(*) into out_maxrows
+  from article
+  where rootid=0;  
+  
+  if in_usrid='999' then--游客,默认值是5个记录
+    out_maxpages:=ceil(out_maxrows/5);
+  else--合法用户
+    select pagenum into n_pagenum
+    from bbsuser
+    where id=in_usrid;
+    out_maxpages:=ceil(out_maxrows/n_pagenum);    
+  end if;
+  
 open out_ref for
-  select a.*,b.* from ARTICLE a,BBSUser  b
-  where a.rootid=0 and a.userid=b.id
-   order by a.id desc ;
+  select * from (
+           select page.*,rownum rn
+           from  (select        
+                               
+                                a.userid userid ,
+                                b.username username,
+                                b.pic pic,
+                                b.id bid,
+                                a.rootid,
+                                a.title,
+                                a.datetime,
+                                a.content,
+                                a.id aid,
+                                b.pagenum pnum 
+                 from article a
+                 join bbsuser b on(a.userid=b.id)
+                 where a.rootid=0  
+                 order by a.id desc) page
+       
+           where rownum <= (in_curpage-1)*n_pagenum+ n_pagenum
+    )
+    where rn > (in_curpage-1)*n_pagenum;
+    
+    out_pagerow:=n_pagenum;
 EXCEPTION
 
  when others THEN
