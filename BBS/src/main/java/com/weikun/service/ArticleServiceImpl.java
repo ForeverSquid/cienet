@@ -13,5 +13,15 @@ public class ArticleServiceImpl implements IArticleService {
 		// TODO Auto-generated method stub
 		return dao.queryArticles(curPage,usrid);
 	}
+	@Override
+	public boolean delArticle(int id) {
+		// TODO Auto-generated method stub
+		return dao.delArticle(id);
+	}
+	@Override
+	public boolean addArticle(Article article) {
+		// TODO Auto-generated method stub
+		return dao.addArticle(article);
+	}
 
 }

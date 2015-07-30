@@ -10,7 +10,7 @@
     </head>
 <body>
     <c:set var="usrid" value='${empty sessionScope.bbsuser?"999": sessionScope.bbsuser.id}'></c:set>
-	<c:import url="article.do?curpage=1&usrid=${usrid}"></c:import>
+	<c:import url="article.do?curpage=1&usrid=${usrid}&action=page"></c:import>
 	
 </body>
 </html>

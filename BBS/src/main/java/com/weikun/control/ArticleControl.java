@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.weikun.service.ArticleServiceImpl;
 import com.weikun.service.IArticleService;
 import com.weikun.vo.Article;
+import com.weikun.vo.BBSUser;
 import com.weikun.vo.PageBean;
 
 /**
@@ -44,19 +45,60 @@ public class ArticleControl extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub	
-		int curPage=Integer.parseInt(request.getParameter("curpage"));
-		String userid=request.getParameter("usrid");
-		PageBean pb=service.queryArticles(curPage,userid);
-		
+		String action=request.getParameter("action");
 		RequestDispatcher dispatcher=null;
-		request.setAttribute("pb", pb);
-		try {
-			dispatcher=request.getRequestDispatcher("show.jsp");
-			dispatcher.forward(request, response);
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+		if(action.equals("page")){
+			
+			int curPage=Integer.parseInt(request.getParameter("curpage"));
+			String userid=request.getParameter("usrid");
+			PageBean pb=service.queryArticles(curPage,userid);
+			
+			
+			request.setAttribute("pb", pb);
+			try {
+				dispatcher=request.getRequestDispatcher("show.jsp");
+				dispatcher.forward(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}else if(action.equals("delz")){//删除主贴
+			int id=Integer.parseInt(request.getParameter("id"));//主贴id
+			if(service.delArticle(id)){
+				//article.do?curpage=1&usrid=${usrid}&action=page
+				try {
+					BBSUser user=(BBSUser)request.getSession().getAttribute("bbsuser");
+							
+					dispatcher=request.getRequestDispatcher("article.do?curpage=1&usrid="+user.getId()+"&action=page");
+					dispatcher.forward(request, response);
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
+		}else if(action.equals("addz")){//增加主贴
+			Article a=new Article();			
+			String title=request.getParameter("title");
+			String content=request.getParameter("content");
+			a.setTitle(title);
+			a.setContent(content);
+			a.setRootid(0);
+			BBSUser user=(BBSUser)request.getSession().getAttribute("bbsuser");
+			a.setUser(user);
+			if(service.addArticle(a)){
+				try {
+					
+							
+					dispatcher=request.getRequestDispatcher("article.do?curpage=1&usrid="+user.getId()+"&action=page");
+					dispatcher.forward(request, response);
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
+		
 		}
+		
 	}
 
 }

@@ -1,7 +1,9 @@
 package com.weikun.dao;
 
+import java.io.StringReader;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -39,7 +41,8 @@ public class ArticleDAOImpl implements IArticleDAO {
 		try {
 			cs=conn.prepareCall(sql);
 			cs.setInt(1, curPage);//当前页
-			cs.setInt(2, Integer.parseInt(usrid));
+			String uid=usrid.equals("")?"999":usrid;
+			cs.setInt(2, Integer.parseInt(uid));
 			cs.registerOutParameter(3, java.sql.Types.NUMERIC);//最大行数
 			cs.registerOutParameter(4, java.sql.Types.NUMERIC);//最大页数
 			cs.registerOutParameter(5, java.sql.Types.NUMERIC);//每页的行数
@@ -95,6 +98,104 @@ public class ArticleDAOImpl implements IArticleDAO {
 		}
 		
 		return pb;
+	}
+
+	@Override
+	public boolean delArticle(int id) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt=null;
+		boolean flag=false;
+		try {
+			String sql="delete from article where id=? or rootid=?";
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, id);
+			pstmt.setInt(2, id);
+			flag=pstmt.executeUpdate()>0?true:false;
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return flag;
+	}
+
+	@Override
+	public boolean addArticle(Article article) {
+		// TODO Auto-generated method stub
+		
+		
+		PreparedStatement pstmt=null;
+		boolean flag=false;
+		try {
+			String sql="insert into article(id,title,rootid,content,datetime,userid) "
+					+ "values(?,?,?,?,sysdate,?)";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, getMaxId());
+			
+			pstmt.setString(2, article.getTitle());
+			pstmt.setInt(3, article.getRootid());
+			StringReader reader=new StringReader(article.getContent());
+			pstmt.setCharacterStream(4, reader,article.getContent().length());
+			
+			
+			
+			pstmt.setInt(5, article.getUser().getId());
+			
+			flag=pstmt.executeUpdate()>0?true:false;
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return flag;
+	}
+
+	private int getMaxId() {
+		// TODO Auto-generated method stub
+		int count=0;
+		
+		String sql="{?=call GETMAXID()}";
+		CallableStatement cs=null;
+		
+		
+		try {
+			cs=conn.prepareCall(sql);		
+			cs.registerOutParameter(1, java.sql.Types.NUMERIC);	
+			cs.execute();
+			count=cs.getInt(1);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			try {
+				
+				cs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return count+1; 
 	}
 
 }

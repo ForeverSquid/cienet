@@ -95,14 +95,14 @@
 											
 											</a>
 
-											
+											<c:if test="${!empty sessionScope.bbsuser.id && sessionScope.bbsuser.id==article.user.id}">
 										
 											<!-- 是本人贴可以删除和修改 -->
 											
 											<a
-												href=""
+												href="article.do?id=${article.id}&action=delz"
 												title="删除本帖"><i class="icon-trash"></i></a>
-
+											</c:if>
 										
 										
 										

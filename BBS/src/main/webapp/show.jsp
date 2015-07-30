@@ -146,14 +146,12 @@
 									</li>
 
 
-									
-										<li><a href="#post" title="灌水" data-toggle="modal"
-											id="myp" data-backdrop="static"
-											onclick="javascript:addz();document.getElementById('submenu').innerHTML='灌水'">灌水</a>
-											
-
-
-										</li>
+										<c:if test="${!empty sessionScope.bbsuser}">
+											<li><a href="#post" title="灌水" data-toggle="modal"
+												id="myp" data-backdrop="static"
+												onclick="javascript:addz();document.getElementById('submenu').innerHTML='灌水'">灌水</a>
+											</li>
+										</c:if>
 									
 									<li class="divider"></li>
 									<li><a href="loginout.jsp"
@@ -421,8 +419,9 @@
 			   });
 			   
 		   }
+		  
 		   //发主贴
- 		   if($("#postrootaction").val()==='add'){//主帖
+ 		   if($("#postrootaction").val()==='addz'){//主帖
  			  $('#addarticle').submit();
 			   
 		   }
@@ -445,7 +444,7 @@
 			
 			$("#postrootid").val(0);
 			//发主帖标志
-			$('#postrootaction').val('add');
+			$('#postrootaction').val('addz');
 			
 		}
 		
