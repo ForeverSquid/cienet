@@ -1,0 +1,10 @@
+ SAX在概念上与DOM完全不同。它不同于DOM的   文档驱动，它是    事件驱动的，它并不需要读入整个文档，
+ 而文档的读入过程也就是SAX的解析过程。
+ * 所谓事件驱动，是指一种基于回调（callback）机制的程序运行方法。
+ 
+ 
+输入XML文件到XMLReader-->XMLReader(parse())解析-->ContentHandler(相当事件监听器,
+定义了好多方法，
+常用的    startDocument()，endDocument(),startElement(),endElement(),characters())
+在XMLReader parse()    过程中生成相应事件，以触发ContentHandler中相应的方法。本代码只是最简单的例子，
+自己想得到什么结果可以在事件中编不同的代码控制。
