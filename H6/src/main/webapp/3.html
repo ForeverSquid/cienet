@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js">
+
+</script>
+
+</head>
+<body>
+	<table border="1px #ooo" id="test" 
+		cellpadding="0" cellspacing="0" width="20%">
+		<tr id="1">
+			<td width="30%">1</td>
+			<td width="30%">2</td>
+			<td width="30%">3</td>
+		</tr>
+		<tr id="2">
+			<td width="30%">11</td>
+			<td width="30%">22</td>
+			<td width="30%">33</td>
+		</tr>
+	</table>
+	<button id="btn1">追加</button>
+	<button id="btn2">删除</button>
+	
+<script type="text/javascript">
+
+	$('#btn1').click(function(){
+		var id=$('#test>tbody>tr:last').attr('id');
+		
+		var s="<td width='30%'>11</td><td width='30%'>22</td><td width='30%'>33</td>";
+		
+		
+		$('#test').append("<tr id='"+(++id)+"'>"+s+"</tr>");
+		
+		
+	});
+	
+	$('#btn2').click(function(){
+		var id=$('#test>tbody>tr:last').attr('id');
+		
+		$('#'+id).remove();
+		
+		
+	});
+	
+</script>
+</body>
+</html>
