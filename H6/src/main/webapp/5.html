@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		$("a").mouseover(function(){
+			
+			var index=$(this).attr('index');
+			
+			$.ajax({
+				type:"post",
+				dataType:"xml",
+				url:"book",
+				data:"index="+index,
+				success:function(xml){
+					$(xml).find('book').each(function(i){
+					
+						
+						var name=$(this).children('name').text();
+						var price=$(this).children('price').text();
+						var path=$(this).children('path').text();
+						
+						$('#photo').attr('src',path);
+						
+						$('#name').html(name);
+						$('#price').html(price);
+					});
+					
+				}
+				
+				
+				
+			});
+			
+			var tip=$('#tip').css('display','block');
+			var x=event.clientX;
+			var y=event.clientY;
+			
+			tip.css("left",x+10);
+			tip.css("top",y);
+		});
+		
+	});
+
+</script>
+</head>
+<body>
+	<a href="" index="1">JSP</a><br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<a href="" index="2">Java</a><br/>
+	<br/><br/><br/><br/><br/>
+	<a href="" index="3">C++</a><br/>
+	
+	<div id="tip"
+			style="position: absolute; display: none; border: 1px; border-style: solid;">
+			<TABLE id="tipTable" border="0" bgcolor="#ffffee">
+				<TR align="center">
+					<TD>
+						<img id="photo" src="" height="80" width="80">
+					</TD>
+				</TR>
+				<TR>
+					<TD><span id="name"></span></TD>
+				</TR>
+				<TR>
+					<TD><span id="price"></span></TD>
+				</TR>
+			</TABLE>
+		</div>
+</body>
+</html>
