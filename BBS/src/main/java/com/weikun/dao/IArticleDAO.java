@@ -5,5 +5,6 @@ import java.util.*;
 public interface IArticleDAO {
 	public PageBean queryArticles(int curPage,String usrid);
 	public boolean delArticle(int id);
+	public ReArticle queryCT(int id);
 	public boolean addArticle(Article article);
 }

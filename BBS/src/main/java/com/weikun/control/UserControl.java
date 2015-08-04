@@ -81,6 +81,16 @@ public class UserControl extends HttpServlet {
 				
 				//转向到主页
 				dispatcher=req.getRequestDispatcher(map.get("success").toString());
+				req.setAttribute("msg", "欢迎你：");
+				dispatcher.forward(req, resp);
+				
+			}else{//登录失败
+				
+				req.getSession().removeAttribute("bbsuser");
+				dispatcher=req.getRequestDispatcher(map.get("success").toString());
+				req.setAttribute("msg", "你是非法用户！");
+				
+				
 				dispatcher.forward(req, resp);
 				
 			}

@@ -358,8 +358,8 @@
 			 
 			 $.ajax({
 				   	  type: "post",
-					  url: "ArticleControl",	
-					  data:"action=del&id="+id+"&rootid="+rootid,
+					  url: "article.do",	
+					  data:"action=delc&id="+id+"&rootid="+rootid,
 					  dataType: "text json",
 					  success : function(data){	
 						 
@@ -402,9 +402,10 @@
 		   }
 		   //新帖使用正常表单提交，回帖使用ajax异步
 		   if($("#postrootaction").val()==='reply'){//回帖使用异步，否则不能定位到model
+			  
 			   $.ajax({
 				   type: "post",
-					  url: "ArticleControl",	
+					  url: "article.do",	
 					  data:"action=reply&title="+$('#title').val()+"&content="+txt+"&rootid="+$("#postrootid").val()+"&userid="+$('#userid').val(),
 					  dataType: "text json",
 					  success : function(data){	
@@ -469,7 +470,7 @@
 			data:从异步返回来的json
 		*/
 		function showhuitie(id,uid,duid,data){
-			 $('#tab_head').empty();
+			  $('#tab_head').empty();
 			  $('#tab_content').empty();
 			  $('#tab_foot').empty();
 			  var head="";
@@ -477,7 +478,7 @@
 			  
 			  var footer="";
 			  
-			 
+			
 			  $(data.list).each(function(i){					  
 			      //var info = comment.root; 
 			      //遍历rshow页的<div id="tab_head">
@@ -488,7 +489,7 @@
 				
 			     //增加删除重贴按钮,浏览用户和本帖用户相同的情况下，才能删除
 			   
-			     if(uid===duid){//字符串是否相等,删除从贴
+			     if(uid===duid){//字符串是否相等,相等就可以删除从贴
 			    	 footer="<div id='foot"+i+"' > "+			    	    
 			    		"	<a class='btn btn-danger'  href='#' "+
 			     			"onclick='javascript:del("+data.list[i].id+","+data.list[i].rootid+")'>删除 </a>"+
@@ -549,16 +550,18 @@
 		
 		//显示回帖的ajax
 		function rshow(id,uid,duid) {
-			//id主贴 uid:浏览用户  duid:本帖id
+			
+			//alert(id+"--"+uid+"---"+duid);
+			//id主贴 uid:浏览用户  duid:本帖uid
 			//显示回帖,用AJAX技术
 			 //把该帖子的id值付给rshow model下的隐藏字段
 			  $("#rshowid").val(id);
 			//把该主帖子的id值付给post model下的隐藏字段，代表该贴是子贴
 			  $("#postrootid").val(id);
-			
+			 
 			 $.ajax({
 				  type: "post",
-				  url: "ArticleControl",	
+				  url: "article.do",	
 				  data:"action=queryid&id="+id,
 				  dataType: "text json",
 				  success : function(data){	

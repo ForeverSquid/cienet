@@ -1,6 +1,7 @@
 package com.weikun.control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -76,13 +77,29 @@ public class ArticleControl extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
+		}else if(action.equals("delc")){//删除从贴
+			int id=Integer.parseInt(request.getParameter("id"));//从贴的主键id
+			int rootid=Integer.parseInt(request.getParameter("rootid"));//主贴
+			if(service.delArticle(id)){
+				
+				//article.do?curpage=1&usrid=${usrid}&action=page
+				try {
+					BBSUser user=(BBSUser)request.getSession().getAttribute("bbsuser");
+							
+					dispatcher=request.getRequestDispatcher("article.do?action=queryid&id="+rootid);
+					dispatcher.forward(request, response);
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
 		}else if(action.equals("addz")){//增加主贴
 			Article a=new Article();			
 			String title=request.getParameter("title");
 			String content=request.getParameter("content");
 			a.setTitle(title);
 			a.setContent(content);
-			a.setRootid(0);
+			a.setRootid(0);//主贴
 			BBSUser user=(BBSUser)request.getSession().getAttribute("bbsuser");
 			a.setUser(user);
 			if(service.addArticle(a)){
@@ -97,6 +114,42 @@ public class ArticleControl extends HttpServlet {
 				}
 			}
 		
+		}else if(action.equals("queryid")){// 查询从贴
+			String id=request.getParameter("id");
+			String cts=service.queryCT(Integer.parseInt(id));
+			
+			
+			
+			response.setCharacterEncoding("utf-8");
+			response.setContentType("text/html");
+			PrintWriter out=response.getWriter();
+			out.print(cts);
+			
+			
+			out.flush();
+			out.close();
+			
+		}else if(action.equals("reply")){//回灌从贴
+			String rootid=request.getParameter("rootid");
+			Article a=new Article();			
+			String title=request.getParameter("title");
+			String content=request.getParameter("content");
+			a.setTitle(title);
+			a.setContent(content);
+			a.setRootid(Integer.parseInt(rootid));//回帖，就不是0，是主贴的id
+			BBSUser user=(BBSUser)request.getSession().getAttribute("bbsuser");
+			a.setUser(user);
+			if(service.addArticle(a)){
+				try {
+					
+							
+					dispatcher=request.getRequestDispatcher("article.do?action=queryid&id="+rootid);
+					dispatcher.forward(request, response);
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
 		}
 		
 	}

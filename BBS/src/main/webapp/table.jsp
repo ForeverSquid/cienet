@@ -18,6 +18,14 @@
 							
 						</div>
 					</c:if>
+					
+					<c:if test="${empty sessionScope.bbsuser}">
+					
+						<div class="alert alert-error">
+							<a class="close" data-dismiss="alert">×</a> <strong>${requestScope.msg}</strong>
+							
+						</div>
+					</c:if>
 
 					<div class="btn-group sepH_b">
 						<button data-toggle="dropdown" class="btn dropdown-toggle">
@@ -86,11 +94,17 @@
 									<td>
 											
 										<!-- 没登陆，游客 uid=0 -->
+										    <c:set var="uid" value="999"></c:set>
+											<c:if test="${!empty sessionScope.bbsuser}">
+												 <c:set var="uid" value="${sessionScope.bbsuser.id}"></c:set>
+											</c:if>
+											
+											
 												
 											<!-- 锚点传值 -->
-											<a href="" title="灌水" data-toggle="modal"
+											<a href="#rshow" title="灌水" data-toggle="modal"
 											id="myp" data-backdrop="static"
-											onclick="rshow(${data.id},${uid},${data.user.id});">
+											onclick="rshow(${article.id},${uid},${article.user.id});">
 												 <i class="icon-eye-open"></i>
 											
 											</a>

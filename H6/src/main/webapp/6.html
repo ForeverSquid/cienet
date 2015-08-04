@@ -1,0 +1,71 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		$('#pro').change(function(){
+			
+				
+			var pro=$(this).val();
+			if(pro=='999'){
+				return ;
+			}
+			
+			$.ajax({
+				data:"pro="+pro,
+				dataType:"text json",
+				type:"post",
+				url:"city",
+				success:function(data){
+					
+					$('#city>option').remove();
+					$('#city').append("<option value='999'>请选择城市</option>");
+					$(data).each(function(i){
+						
+					
+						$('#city').append("<option value='"+data[i].id+"'>"+data[i].name+"</option>");
+					});
+				}
+				
+				
+				
+			});
+		});
+		
+		
+		
+	});
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	
+	省份：
+	<select id="pro" name="pro">
+		<option value="999">
+			请选择省份
+		</option>
+		<option value="1">
+			黑龙江省
+		</option>
+		<option value="2">
+			吉林省
+		</option>
+	
+	
+	</select>
+	城市
+	<select id="city" name="city">
+		<option>
+			请选择城市
+		</option>
+	
+	
+	</select>
+</body>
+</html>

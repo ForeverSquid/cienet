@@ -17,6 +17,7 @@ import com.weikun.db.DruidDB;
 import com.weikun.vo.Article;
 import com.weikun.vo.BBSUser;
 import com.weikun.vo.PageBean;
+import com.weikun.vo.ReArticle;
 
 public class ArticleDAOImpl implements IArticleDAO {
 	private Connection conn;
@@ -196,6 +197,121 @@ public class ArticleDAOImpl implements IArticleDAO {
 		}
 		
 		return count+1; 
+	}
+	private String queryTitle(int id) {//查询主贴的title
+		
+		PreparedStatement pstmt=null;
+		String sql="select title from article where id=?";
+		ResultSet rs=null;
+		String title="";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				title=rs.getString("title");
+			}
+			
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	
+		
+			
+			
+		
+		return title;
+	
+		
+	}
+	@Override
+	public ReArticle queryCT(int id) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt=null;
+		List<Article> list=new ArrayList<Article>();
+		ResultSet rs=null;
+		ReArticle re=new ReArticle();
+		try {
+			String sql=
+           
+           "select a.userid userid , "+
+                                "b.username username, "+
+                                "b.pic pic, "+
+                               " b.id bid, "+
+                               " a.rootid, "+
+                              "  a.title, "+
+                              "  a.datetime, "+
+                               " a.content, "+
+                               " a.id aid "+
+                               
+                " from article a "+
+                " join bbsuser b on(a.userid=b.id) "+
+                " where a.rootid=?  "+
+               "  order by a.id desc  ";
+       
+         
+   
+   
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			
+			
+			
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				Article a=new Article();
+				a.setId(rs.getInt("aid"));
+				a.setTitle(rs.getString("title"));
+				a.setContent(rs.getString("content"));
+				a.setRootid(rs.getInt("rootid"));
+				Date d=rs.getDate("datetime");
+				SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+						
+				a.setDatetime(sdf.format(d));
+				BBSUser user=new BBSUser();
+				user.setId(rs.getInt("bid"));
+			
+				user.setUsername(rs.getString("username"));
+				
+				user.setId(rs.getInt("userid"));
+				
+				a.setUser(user);
+				
+				list.add(a);
+				
+			}
+			re.setTitle(queryTitle(id));
+			
+			
+			re.setList(list);
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	
+		
+		return re;
 	}
 
 }
